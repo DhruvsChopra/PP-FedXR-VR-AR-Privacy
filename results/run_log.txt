@@ -1,0 +1,64 @@
+dataset {'samples': 65920, 'users': 1000, 'features': 48, 'classes': 8, 'train': 53130, 'test': 12790, 'class_counts': [8433, 7800, 8204, 7622, 8773, 8509, 8510, 8069], 'samples_per_user': [28, 60, 125]}
+E1 baselines
+  FedAvg                 acc=0.9233 mi_auc=0.506 pers=0.9379 t=4.1s
+  FedProx                acc=0.9232 mi_auc=0.506 pers=0.9379 t=4.2s
+  DP-FedAvg              acc=0.9120 mi_auc=0.509 pers=0.9308 t=3.9s
+  PP-FedXR (proposed)    acc=0.9194 mi_auc=0.510 pers=0.9331 t=45.3s
+  centralised 0.9577795152462861 local-only 0.7271524274482959 mi (0.507064, 0.018000000000000016)
+  eps proposed 10.947630246663406
+E2 privacy-utility
+  z=0.3 eps=1310.69 acc=0.9493 mi=0.510
+  z=0.5 eps=95.04 acc=0.9432 mi=0.512
+  z=0.7 eps=22.17 acc=0.9364 mi=0.513
+  z=1.0 eps=10.95 acc=0.9217 mi=0.515
+  z=1.5 eps=5.59 acc=0.8960 mi=0.511
+  z=2.0 eps=3.76 acc=0.8728 mi=0.533
+  z=3.0 eps=2.30 acc=0.8240 mi=0.512
+E3 re-identification
+  b=0 window-top1=0.292 top5=0.552 session=0.850 task-acc=0.9578
+  b=0.5 window-top1=0.102 top5=0.267 session=0.404 task-acc=0.9543
+  b=1.0 window-top1=0.020 top5=0.075 session=0.016 task-acc=0.9361
+  b=2.0 window-top1=0.003 top5=0.015 session=0.002 task-acc=0.8754
+  b=3.0 window-top1=0.002 top5=0.013 session=0.002 task-acc=0.6370
+E4 poisoning
+  frac=0.0 agg=mean acc=0.9010
+  frac=0.0 agg=median acc=0.8618
+  frac=0.0 agg=trimmed acc=0.8770
+  frac=0.0 agg=normbound acc=0.9191
+  frac=0.1 agg=mean acc=0.7843
+  frac=0.1 agg=median acc=0.8517
+  frac=0.1 agg=trimmed acc=0.8706
+  frac=0.1 agg=normbound acc=0.8875
+  frac=0.2 agg=mean acc=0.1275
+  frac=0.2 agg=median acc=0.8368
+  frac=0.2 agg=trimmed acc=0.8532
+  frac=0.2 agg=normbound acc=0.8635
+  frac=0.3 agg=mean acc=0.1275
+  frac=0.3 agg=median acc=0.8020
+  frac=0.3 agg=trimmed acc=0.8077
+  frac=0.3 agg=normbound acc=0.8345
+E5 communication
+   {'fp32_bytes_per_update': 14624, 'q8_bytes_per_update': 3664, 'q8_acc': 0.9244722439405786, 'fp32_acc': 0.9193901485535575, 'raw_bytes_per_sec': 9720}
+E6 secure aggregation
+  n=10 total=0.002s per-client=0.21ms err=0.00e+00 corr=0.0029
+  n=25 total=0.013s per-client=0.51ms err=0.00e+00 corr=0.0041
+  n=50 total=0.050s per-client=1.00ms err=0.00e+00 corr=-0.0056
+  n=100 total=0.197s per-client=1.97ms err=0.00e+00 corr=0.0180
+  n=200 total=0.788s per-client=3.94ms err=0.00e+00 corr=-0.0033
+E7 latency
+   {'feature_ms_p50': 0.017100000150094274, 'infer_ms_p50': 0.006100000064179767, 'edge_p50': 0.02320000021427404, 'edge_p95': 0.03370000013092067, 'cloud_p50': 48.19684120331513, 'cloud_p95': 85.37029531814512}
+E8 scalability
+  m=25 acc=0.7319 eps=2.32 secagg=0.012s
+  m=50 acc=0.8363 eps=4.16 secagg=0.048s
+  m=100 acc=0.9148 eps=7.78 secagg=0.194s
+  m=200 acc=0.9328 eps=15.86 secagg=0.785s
+  m=400 acc=0.9381 eps=33.50 secagg=3.173s
+E9 explainability
+  task [0.012 0.095 0.068 0.049 0.168 0.119 0.097 0.186] identity [0.221 0.074 0.141 0.051 0.142 0.059 0.123 0.05 ]
+E10 trust score
+  Centralised            P=0.148 U=1.000 R=1.000 T=0.333 score=0.568
+  FedAvg                 P=0.988 U=0.964 R=0.142 T=0.333 score=0.640
+  FedProx                P=0.988 U=0.964 R=0.142 T=0.333 score=0.640
+  DP-FedAvg              P=0.982 U=0.952 R=0.940 T=0.500 score=0.869
+  PP-FedXR (proposed)    P=0.979 U=0.960 R=0.940 T=1.000 score=0.970
+done in 259.3 s
